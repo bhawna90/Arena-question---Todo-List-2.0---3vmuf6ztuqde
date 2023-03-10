@@ -10,14 +10,18 @@ const list = [
 ];
 
 const MainSection = (props) => {
-  
+  const [finalList, setFinalList] = useState(list)
+  const addItem = (item) => {
+    list.push(item)
+    setFinalList(list)
+  }
   return (
     <div className="main-section">
       {props.active === "INBOX" && (
-        <Inbox list={} append={} />
+        <Inbox list={finalList} append={addItem} />
       )}
-      {props.active === "TODAY" && <Today list={} />}
-      {props.active === "NEXT" && <Next7Days list={} />}
+      {props.active === "TODAY" && <Today list={finalList} />}
+      {props.active === "NEXT" && <Next7Days list={finalList} />}
     </div>
   );
 };
